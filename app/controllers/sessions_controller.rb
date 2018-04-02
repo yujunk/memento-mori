@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :authenticate_user, :only => [:profile, :setting]
+  before_action :authenticate_user, :only => [:settings]
   before_action :save_login_state, :only => [:new, :create]
 
   def new
@@ -25,10 +25,7 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
-  def profile
-  end
-
-  def setting
+  def settings
   end
 end
 
