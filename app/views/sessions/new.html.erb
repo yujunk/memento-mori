@@ -1,0 +1,21 @@
+<h2> Sign In: </h2>
+
+<div id="signin-box">
+  <%= form_for @user, url: {action: "create"} do |p| %>
+    <%#= p.hidden_field :user_id, :value => current_user.id %>
+      <div class="text-field">
+        <%= p.label :email %>
+        <%= p.text_field :email, type: 'email' %>
+      </div>
+
+      <div class="password-field">
+        <%= p.label :password %>
+        <%= p.password_field :password, type: 'password' %>
+      </div>
+
+      <div class="button-field">
+        <%= p.submit %>
+      </div>
+  <%end%>
+
+</div>

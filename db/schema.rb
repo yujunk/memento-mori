@@ -32,17 +32,14 @@ ActiveRecord::Schema.define(version: 20180402050448) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username", null: false
-    t.string "string", null: false
     t.string "email", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "password", null: false
-    t.integer "type", default: 0
+    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email"
-    t.index ["username"], name: "index_users_on_username"
   end
 
   create_table "vital_documents", force: :cascade do |t|

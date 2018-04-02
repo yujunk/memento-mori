@@ -1,0 +1,3 @@
+class Deputy < User
+
+end
