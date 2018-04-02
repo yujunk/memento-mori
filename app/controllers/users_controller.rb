@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
+    @user.save
 
     redirect_to "/sign_in"
   end
@@ -17,3 +18,4 @@ class UsersController < ApplicationController
   end
 
 end
+
