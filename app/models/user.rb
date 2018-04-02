@@ -31,5 +31,6 @@ end
 
 #https://www.sitepoint.com/rails-userpassword-authentication-from-scratch-part-i/
 
-#Woops should have seen this earlier:
+#Woops should have seen this earlier, could have just used password_digest & has_secure_password:
 #https://medium.com/@tpstar/password-digest-column-in-user-migration-table-871ff9120a5
+#http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password
