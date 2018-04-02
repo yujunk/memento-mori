@@ -4,9 +4,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:user][:email], password: params[:user][:password])
+    @authorized_user = User.authenticate(params[:user][:email], params[:user][:password])
 
-    redirect_to root_url
+    if @authorized_user
+      redirect_to root_url
+    else
+      @user = User.new
+      redirect_to sign_in_path
+    end
   end
 
 end
