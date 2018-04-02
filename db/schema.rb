@@ -35,7 +35,10 @@ ActiveRecord::Schema.define(version: 20180402050448) do
     t.string "email", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.string "password", null: false
+    t.string "password"
+    t.string "encrypted_password", limit: 128, null: false
+    t.string "session_token", limit: 128
+    t.string "salt", limit: 128
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

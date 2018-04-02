@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Memento Mori</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <% if @current_user %>
+            <%= @current_user.first_name %> |
+            <%= link_to 'sign out', sign_out_path, method: :delete %>
+          <% else %>
+            <%= link_to "Sign In", sign_in_path %> |
+            <%= link_to "Register", sign_up_path %>
+          <% end %>
+        </a>
+        
+      </li>
+    </ul>
+  </div>
+</nav>
