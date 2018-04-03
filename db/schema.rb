@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180402050448) do
     t.string "address"
     t.string "city"
     t.string "postcode"
+    t.string "label"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

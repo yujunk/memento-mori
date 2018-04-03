@@ -9,6 +9,7 @@ class CreateContacts < ActiveRecord::Migration[5.1]
       t.string :address
       t.string :city
       t.string :postcode
+      t.string :label
       t.string :notes
       t.timestamps
     end
