@@ -1,0 +1,3 @@
+$("#ajax-listings").html("");
+
+$("<%= escape_javascript(  render partial: 'contacts/listing', locals: {contacts: @contacts})%>").appendTo("#ajax-listings"); 

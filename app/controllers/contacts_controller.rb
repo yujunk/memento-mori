@@ -21,8 +21,18 @@ class ContactsController < ApplicationController
   end
 
   def search
-    @contacts = Contact.all
-    
+    if params[:search].blank?
+      @contacts = Contact.all
+    else
+      # @contacts = Contact.search(params[:search])
+      @contacts = Contact.contacts_search_engine(params[:search])
+    end
+
+    respond_to do |format|
+      format.json
+      # format.html { render :index }
+    end
+
   end
 
   private

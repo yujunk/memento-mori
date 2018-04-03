@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "/:user_id/contacts/" => "contacts#index", as: "contacts"
   resources :contacts, only: [:new, :create]
   # get "/:user_id/contacts/new" => "contacts#new", as: "new_contact"
-  post "/:user_id/contacts/search" => "contacts#search", as: "search_contacts"
+  get "/:user_id/contacts/search" => "contacts#search", as: "search_contacts"
   get "/:user_id/contacts/:id" => "contacts#show", as: "contact"
   get "/:user_id/contacts/:id/edit" => "contacts#edit", as: "edit_contact"
   

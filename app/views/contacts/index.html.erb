@@ -10,24 +10,26 @@
   <br/>
 
 <!-- Search Function -->
-<div class="p-2">
-  <div class="background-color">
-    <h5 class="text-center"> Search Existing Contacts: </h5>
-    <br/>
+  <div class="p-2">
+    <div class="background-color">
+      <h5 class="text-center"> Search Existing Contacts: </h5>
+      <br/>
 
-    <div class="form-group">
-      <%= form_tag search_contacts_path do%>
-        <%= text_field_tag "search", nil, placeholder: "Enter name, city, or relationship", :class => "form-control" %> <br/>
-      <div class="text-center"> 
-        <%= submit_tag "Search", class: "btn btn-primary"  %> 
+      <div class="form-group">
+        <%= form_tag search_contacts_path, method: :get do%>
+          <%= text_field_tag "search", nil, placeholder: "Enter name, city, or relationship", :class => "form-control" %> <br/>
+        <div class="text-center"> 
+          <%= submit_tag "Search", class: "btn btn-primary"  %> 
+        </div>
+        <%end%>
       </div>
-      <%end%>
     </div>
   </div>
-</div>
-<br/>
+  <br/>
 
 <!-- Contact Listing -->
-  <%= render partial: 'contacts/listing' %>
-
+  <div id="ajax-listings">
+    <%= render partial: 'contacts/listing' %>
+  </div>
+  
 </div>
