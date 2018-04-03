@@ -6,8 +6,8 @@ class ContactsController < ApplicationController
   end
 
   def create
-    byebug
-    @contact = Contact.create(contact_params)
+    @contact = Contact.new(contact_params)
+    @contact.save
 
     redirect_to contacts_path(@current_user)
   end
@@ -20,10 +20,19 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id]) 
   end
 
+  def search
+    @contacts = Contact.all
+    
+  end
+
   private
 
   def contact_params
-    params.require(:contact).permit(:email, :first_name, :last_name, :birthdate, :phone_number, :address, :city, :postcode, :notes, :label, :user_id)
+    params.require(:contact).permit(:email, :first_name, :last_name, :birthdate, :phone_number, :address, :city, :postcode, :notes, :relationship, :user_id)
+  end
+
+  def filtering_params(params)
+    params.slice
   end
 
 end

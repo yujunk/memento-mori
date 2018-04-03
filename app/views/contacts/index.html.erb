@@ -6,88 +6,28 @@
   </div>
 
 <!-- Add Contact Modal -->
-  <div class="modal fade" id="addContactModalCenter" tabindex="-1" role="dialog" aria-labelledby="addContactModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          
-          <div class="modal-header">
-            <h5 class="modal-title" id="addContactModalLongTitle">Add Contact Details: </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          
-          <div class="modal-body">
-            <%= form_tag({controller: "contacts", action: "create"}, method: "post", id: "add-contact-form") do %>
-            <%= hidden_field_tag "user_id", @current_user.id %>
-              
-              <div class="form-row">
-                <div class="form-group col-md-6"> First Name: <%= text_field_tag 'contact[first_name]', params[:first_name], :class => "form-control" %> 
-                </div> <br/>
-                <div class="form-group col-md-6"> Last Name: <%= text_field_tag 'contact[last_name]', params[:last_name], :class => "form-control" %> </div><br/>
-              </div>
-
-              <div class="form-group"> Email: <%= text_field_tag 'contact[email]', params[:email], :class => "form-control" %> </div>
-
-              <div class="form-group"> Phone: <%= text_field_tag 'contact[phone_number]', params[:phone_number], :class => "form-control" %> </div>
-
-              <div class="form-group"> Address: <%= text_field_tag 'contact[address]', params[:address], :class => "form-control"%> </div>
-
-              <div class="form-row">
-                <div class="form-group col-md-6"> City: <%= text_field_tag 'contact[city]', params[:city], :class => "form-control" %>
-                </div>
-                <div class="form-group col-md-6"> Postcode: <%= text_field_tag 'contact[postcode]', params[:postcode], :class => "form-control" %>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group col-md-6"> Birthdate: <%= text_field_tag 'contact[birthdate]', params[:birthdate], :class => "form-control" %>
-                </div>
-                <div class="form-group col-md-6"> Relationship: <%= text_field_tag 'contact[label]', params[:label], :class => "form-control" %>
-                </div>
-              </div>
-              <div class="form-group"> Notes: <%= text_field_tag 'contact[notes]', params[:notes], :class => "form-control"%> </div>
-          </div>
-          
-          <div class="modal-footer">
-            <!-- <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='/auth/facebook'">Sign In with Facebook</button> -->
-            <%= submit_tag "Submit", :name => nil, :class=>"btn btn-primary", :onclick => "onclick=myFunction()" %>
-              <% end %>
-          </div>
-
-      </div>
-    </div>
-  </div>
+  <%= render partial: 'contacts/addcontactmodal' %>
+  <br/>
 
 <!-- Search Function -->
+<div class="p-2">
+  <div class="background-color">
+    <h5 class="text-center"> Search Existing Contacts: </h5>
+    <br/>
+
+    <div class="form-group">
+      <%= form_tag search_contacts_path do%>
+        <%= text_field_tag "search", nil, placeholder: "Enter name, city, or relationship", :class => "form-control" %> <br/>
+      <div class="text-center"> 
+        <%= submit_tag "Search", class: "btn btn-primary"  %> 
+      </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+<br/>
 
 <!-- Contact Listing -->
-  <div class="p-4">
-    <h3 class="text-center"> Your Existing Contacts: </h3>
-  </div>
-
-  <% @contacts.each do |contact| %> 
-    <div class="p-3">
-      <div class="card" style="width: 18rem;">
-        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-        
-        <div class="card-body">
-          <h5 class="card-title text-center"> <%= contact.first_name %> <%= contact.last_name %> </h5>
-          <p class="card-text  text-center"> <%= contact.label %> </p>
-        </div>
-
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item text-center"> <%= contact.phone_number %> </li>
-          <li class="list-group-item text-center"> <%= contact.email %> </li>
-          <li class="list-group-item text-center"> <%= contact.city %> </li>
-        </ul>
-
-        <div class="card-body">
-          <a href="<%= contact_path(contact[:id], @current_user) %>" class="card-link">Show Details </a>
-          <a href="<%= edit_contact_path(contact[:id], @current_user) %>" class="card-link">Edit Details </a>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <%= render partial: 'contacts/listing' %>
 
 </div>
