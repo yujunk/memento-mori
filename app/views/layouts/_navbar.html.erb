@@ -1,23 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Memento Mori</a>
+  <a class="navbar-brand" href="<%= root_url %>">Memento Mori</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
       <%if @current_user %>
         <li class="nav-item dropdown">
-          <div class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= @current_user.first_name %>
           </div>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <div class="dropdown-item"> <%= link_to 'Dashboard', dashboard_path(@current_user) %> </div>
-            <div class="dropdown-item"> <%= link_to 'Settings', settings_path %> </div>
-            <div class="dropdown-item"> <%= link_to 'Sign Out', sign_out_path, method: :delete %> </div>
+            <a class="dropdown-item" href="<%= dashboard_path(@current_user) %>"> Dashboard </a>
+            <a class="dropdown-item" href="<%= settings_path %>"> Settings </a>
+            <a class="dropdown-item" href= "/sign_out" data-method="delete"> Sign Out </a>
           </div>
       <%else%>
         <li class="nav-item active">
-           <div class="nav-link"> <%= link_to "Sign In", sign_in_path %> </div>
+           <a class="nav-link" href="<%= sign_in_path %>" > Sign In </a>
         </li>
         <li class="nav-item active">
-          <div class="nav-link"> <%= link_to "Register", sign_up_path %> </div>
+          <a class="nav-link" href="<%= sign_up_path %>"> Register </a>
         </li>
       <%end%>
     </ul>
