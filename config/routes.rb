@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get "/:user_id/contacts/search" => "contacts#search", as: "search_contacts"
   get "/:user_id/contacts/:id" => "contacts#show", as: "contact"
   get "/:user_id/contacts/:id/edit" => "contacts#edit", as: "edit_contact"
+
+  get "/:user_id/advisory" => "advisory#index", as: "advisory"
   
 
 end

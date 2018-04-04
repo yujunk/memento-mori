@@ -7,32 +7,42 @@
             </a>
         </li>
         <li>
-            <a href="#">Dashboard</a>
+            <a href="<%= dashboard_path(@current_user) %>">Dashboard</a>
+        </li>
+        <br/>
+        <li>
+            <b class="category-text">MY LIFE</b>
         </li>
         <li>
-            <a href="#">Shortcuts</a>
+            <a href="#" onclick="return false;">Properties <span class="coming-soon-text"> (coming soon) </span></a>
         </li>
         <li>
-            <a href="#">Overview</a>
+            <a href="#" onclick="return false;">Health <span class="coming-soon-text"> (coming soon) </span></a>
         </li>
         <li>
-            <a href="#">Events</a>
+            <a href="#" onclick="return false;">Financial <span class="coming-soon-text"> (coming soon) </span></a>
+        </li>
+        <br/>
+        <li>
+            <b  class="category-text">CONNECT</b>
         </li>
         <li>
-            <a href="#">About</a>
+            <a href="<%=contacts_path(@current_user)%>">Contacts</a>
         </li>
         <li>
-            <a href="#">Services</a>
+            <a href="#">Deputies</a>
         </li>
         <li>
-            <a href="#">Contact</a>
+            <a href="<%=advisory_path(@current_user)%>">Advisory</a>
         </li>
     </ul>
   </div>
 <% end %>
 
 
-
+<!-- https://github.com/BlackrockDigital/startbootstrap-simple-sidebar -->
+<!-- https://github.com/theisaac95/medex/blob/master/app/views/layouts/_dashboard.html.erb -->
+<!-- https://github.com/theisaac95/medex/blob/master/app/assets/stylesheets/dashboard.scss -->
 
 
 
