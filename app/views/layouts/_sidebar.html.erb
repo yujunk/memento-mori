@@ -1,85 +1,42 @@
 <%if @current_user %>
-  <div class="container-fluid">
-    <div class="row">
-      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-        <div class="sidebar-sticky">
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-dark">
-            <b>MY PLAN</b>
-          </h6>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="<%= dashboard_path(@current_user) %>">
-                Dashboard
-              </a>
-            </li>
-          </ul>
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-dark">
-            <b>MY LIFE</b>
-          </h6>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                About Me
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Properties
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">
-                Vehicles
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">
-                Employment
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">
-                Miscellaneous
-              </a>
-            </li>
-          </ul>
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-dark">
-            <b>MEDICAL</b>
-          </h6>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">
-                Health Insurance
-              </a>
-            </li>
-          </ul>
-           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-dark">
-            <b>FINANCIAL</b>
-          </h6>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">
-                Life Insurance
-              </a>
-            </li>
-          </ul>
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-dark">
-            <b>SHARING</b>
-          </h6>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="<%= contacts_path(@current_user)%> ">
-                Contacts
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">
-                Assigning Deputies
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a href="#">
+                Memento Mori
+            </a>
+        </li>
+        <li>
+            <a href="#">Dashboard</a>
+        </li>
+        <li>
+            <a href="#">Shortcuts</a>
+        </li>
+        <li>
+            <a href="#">Overview</a>
+        </li>
+        <li>
+            <a href="#">Events</a>
+        </li>
+        <li>
+            <a href="#">About</a>
+        </li>
+        <li>
+            <a href="#">Services</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+    </ul>
   </div>
 <% end %>
+
+
+
+
+
+
+
+
+
+
