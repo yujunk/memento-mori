@@ -1,0 +1,35 @@
+<div class="container pt-4">
+
+<!-- Add Contact Button -->
+  <div class="p-2 text-center">
+    <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#addContactModalCenter"> + Add Contact </button>
+  </div>
+
+<!-- Add Contact Modal -->
+  <%= render partial: 'contacts/addcontactmodal' %>
+  <br/>
+
+<!-- Search Function -->
+  <div class="p-2">
+    <div class="background-color">
+      <h5 class="text-center"> Search Existing Contacts: </h5>
+      <br/>
+
+      <div class="form-group">
+        <%= form_tag search_contacts_path, method: :get, remote: true do%>
+          <%= text_field_tag "search", nil, placeholder: "Enter partial name, city, relationship or email", :class => "form-control" %> <br/>
+        <div class="text-center"> 
+          <%= submit_tag "Search", class: "btn btn-primary"  %> 
+        </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+<!-- Contact Listing -->
+  <div id="ajax-listings">
+    <%= render partial: 'contacts/listing' %>
+  </div>
+
+</div>
