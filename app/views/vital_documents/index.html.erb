@@ -1,0 +1,22 @@
+<div class="container pt-4">
+
+<div class="header">
+  <h2> Vital Documents </h2>
+  <br/> 
+</div>
+
+<!-- Add Document Button -->
+  <div class="p-2 text-center">
+    <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#addVitalDocumentModalCenter"> + Add Document </button>
+  </div>
+
+<!-- Add Document Modal -->
+  <%= render partial: 'vital_documents/addvitaldocumentmodal' %>
+  <br/>
+
+<!-- Document Listing -->
+  <div id="ajax-document-listings">
+    <%= render partial: 'vital_documents/listing' %>
+  </div>
+
+</div>

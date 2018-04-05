@@ -15,4 +15,5 @@ class Contact < ApplicationRecord
     contacts = Contact.where("lower(first_name) LIKE ? or lower(last_name) LIKE ? or lower(relationship) LIKE ? or lower(city) LIKE ? or lower(email) LIKE ?", "%#{params.downcase}%", "%#{params.downcase}%", "%#{params.downcase}%", "%#{params.downcase}%", "%#{params.downcase}%")
     contacts
   end
+
 end

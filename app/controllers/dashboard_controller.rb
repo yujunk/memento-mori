@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
   def show
     @user = User.find(params[:user_id])
   end
-end
 
+end
 
 #https://stackoverflow.com/questions/7533449/rails-controller-design-pattern-for-dashboard

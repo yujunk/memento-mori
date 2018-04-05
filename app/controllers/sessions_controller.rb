@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
 
     if @authorized_user
       session[:user_id] = @authorized_user.id
-      flash[:notice] = "Welcome, #{@authorized_user.first_name}."
       redirect_to root_url
     else
       @user = User.new

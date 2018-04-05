@@ -13,6 +13,9 @@
         <li>
             <b class="category-text">MY LIFE</b>
         </li>
+         <li>
+            <a href="<%=user_vital_documents_path(@current_user) %>"> Documents </a>
+        </li>
         <li>
             <a href="#" onclick="return false;">Properties <span class="coming-soon-text"> (coming soon) </span></a>
         </li>
@@ -27,7 +30,7 @@
             <b  class="category-text">CONNECT</b>
         </li>
         <li>
-            <a href="<%=contacts_path(@current_user)%>">Contacts</a>
+            <a href="<%=user_contacts_path(@current_user)%>">Contacts</a>
         </li>
         <li>
             <a href="#">Deputies</a>

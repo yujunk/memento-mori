@@ -1,16 +1,16 @@
-<div class="modal fade" id="addContactModalCenter" tabindex="-1" role="dialog" aria-labelledby="addContactModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="addVitalDocumentModalCenter" tabindex="-1" role="dialog" aria-labelledby="addVitalDocumentModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           
           <div class="modal-header">
-            <h5 class="modal-title" id="addContactModalLongTitle">Add Contact Details: </h5>
+            <h5 class="modal-title" id="addVitalDocumentModalLongTitle">Add Document: </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           
           <div class="modal-body">
-            <%= form_for :user_contacts, url: {action: "create"} do |p| %>
+            <%= form_for :user_vital_documents, url: {action: "create"} do |p| %>
               <%= p.hidden_field :user_id, :value => @current_user.id %>
               
               <div class="form-row">

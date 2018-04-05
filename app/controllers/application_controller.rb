@@ -24,6 +24,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def user_allowed?(action:, user:)
+    if user.deputy?
+      redirect_to URI(request.referrer).path, :flash => { :error => "As Deputy you are not allowed to perform this action" }
+    else
+      action
+    end
+  end
+
+end
+
   #authenticate_user - assigns the user object to the @current_user instance variable and authenticates
   #save_login_state - prevents the user from accessing the signup and login pages whilst logged in
-end
+  #allowed? - makes sure user sees pages relevant to them

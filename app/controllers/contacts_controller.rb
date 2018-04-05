@@ -1,19 +1,17 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user
 
-  def new
-    @contact = Contact.new
-  end
-
   def create
     @contact = Contact.new(contact_params)
+    user_allowed?(action: @contact, user: @current_user)
+    
     @contact.save
 
-    redirect_to contacts_path(@current_user)
+    redirect_to user_contacts_path(@current_user)
   end
 
   def index
-    @contacts = Contact.all
+    @contacts = Contact.where(user_id: @current_user)
   end
 
   def show
@@ -22,9 +20,10 @@ class ContactsController < ApplicationController
 
   def search
     if params[:search].blank?
-      @contacts = Contact.all
+      @contacts = Contact.where(user_id: @current_user)
     else
-      @contacts = Contact.search(params[:search])
+      relevant_contacts = Contact.where(user_id: @current_user)
+      @contacts = relevant_contacts.search(params[:search])
       # @contacts = Contact.contacts_search_engine(params[:search])
     end
 
@@ -38,7 +37,7 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:email, :first_name, :last_name, :birthdate, :phone_number, :address, :city, :postcode, :notes, :relationship, :user_id)
+    params.require(:user_contacts).permit(:email, :first_name, :last_name, :birthdate, :phone_number, :address, :city, :postcode, :notes, :relationship, :user_id)
   end
 
   def filtering_params(params)
