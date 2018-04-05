@@ -5,29 +5,35 @@
             <a href="#">
                 Memento Mori
             </a>
+            <br/>
         </li>
         <li>
-            <a href="<%= dashboard_path(@current_user) %>">Dashboard</a>
+            <h4 class="category-text"> <b><%= @current_user.role %> view</b> </h4>
+        </li>
+        <li>
+            <a href="<%= dashboard_path(@current_user) %>">Dashboard  <span class="coming-soon-text"> (coming soon) </span></a>
         </li>
         <br/>
+        <% if @current_user.testator? %>
+            <li>
+                <b class="category-text">My Life </b>
+            </li>
+             <li>
+                <a href="<%=user_vital_documents_path(@current_user) %>"> Documents </a>
+            </li>
+            <li>
+                <a href="#" onclick="return false;">Properties <span class="coming-soon-text"> (coming soon) </span></a>
+            </li>
+            <li>
+                <a href="#" onclick="return false;">Health <span class="coming-soon-text"> (coming soon) </span></a>
+            </li>
+            <li>
+                <a href="#" onclick="return false;">Financial <span class="coming-soon-text"> (coming soon) </span></a>
+            </li>
+            <br/>
+        <% end %>
         <li>
-            <b class="category-text">MY LIFE</b>
-        </li>
-         <li>
-            <a href="<%=user_vital_documents_path(@current_user) %>"> Documents </a>
-        </li>
-        <li>
-            <a href="#" onclick="return false;">Properties <span class="coming-soon-text"> (coming soon) </span></a>
-        </li>
-        <li>
-            <a href="#" onclick="return false;">Health <span class="coming-soon-text"> (coming soon) </span></a>
-        </li>
-        <li>
-            <a href="#" onclick="return false;">Financial <span class="coming-soon-text"> (coming soon) </span></a>
-        </li>
-        <br/>
-        <li>
-            <b  class="category-text">CONNECT</b>
+            <b  class="category-text">Connect</b>
         </li>
         <li>
             <a href="<%=user_contacts_path(@current_user)%>">Contacts</a>

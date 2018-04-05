@@ -24,19 +24,6 @@
     <!-- NavBar -->
     <%= render partial: 'layouts/navbar' %>
 
-    <!-- Flash notice -->
-     <div id="flash">
-      <% flash.each do |key, value| -%>
-        <div class="alert alert-<%= key %> alert-dismissible" role="alert"> 
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-         <%=h value %> </div>
-      <% end %>
-    </div>
-    <br/>
-    <br/>
-
     <!-- Wrapper -->
     <div id="wrapper">
     
@@ -46,15 +33,29 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                
-            <!-- Hamburger Menu Toggle -->
+
+            <br/>
+            <br/>
+
+            <!-- Flash notice -->
+            <div id="flash flash-position">
+              <% flash.each do |key, value| -%>
+                <div class="alert alert-<%= key %> alert-dismissible" role="alert"> 
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                 <%=h value %> </div>
+              <% end %>
+            </div>
+            
+        <!-- Hamburger Menu Toggle -->
             <% if @current_user %>
                 <a href="#menu-toggle" id="menu-toggle" class="hamburger" >
                     <%= image_submit_tag ('hamburger.png'), id: "hamburger" %>
                 </a>
             <% end %>
 
-            <!-- Main Content -->
+        <!-- Main Content -->
             <%= yield %>
             
             </div>

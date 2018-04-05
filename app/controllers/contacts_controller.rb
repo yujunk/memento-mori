@@ -3,8 +3,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    user_allowed?(action: @contact, user: @current_user)
-    
+  
     @contact.save
 
     redirect_to user_contacts_path(@current_user)
@@ -38,10 +37,6 @@ class ContactsController < ApplicationController
 
   def contact_params
     params.require(:user_contacts).permit(:email, :first_name, :last_name, :birthdate, :phone_number, :address, :city, :postcode, :notes, :relationship, :user_id)
-  end
-
-  def filtering_params(params)
-    params.slice
   end
 
 end

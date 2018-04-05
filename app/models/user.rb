@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  enum status: [ :testator, :deputy]
-  
   has_many :vital_documents
   has_many :contacts
+
+  enum role: { testator: 0, deputy: 1 }
 
   before_save :encrypt_password
 

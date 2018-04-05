@@ -14,8 +14,7 @@ class SessionsController < ApplicationController
       redirect_to root_url
     else
       @user = User.new
-      flash[:notice] = "Invalid username or password."
-      redirect_to sign_in_path
+      redirect_to sign_in_path, :flash => { :danger => "Wrong email or password. Please try again." }
     end
   end
 
