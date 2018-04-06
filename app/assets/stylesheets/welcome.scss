@@ -10,6 +10,7 @@ div.background {
   /*transform: translate(100px, 100px);*/
 
 }
+
 #welcome {
     position: absolute;
     background-color: rgba(256,256,256,0.4);
@@ -17,11 +18,12 @@ div.background {
     top: 180px;
     font-weight: 200;
     font-size: 4em;
+    padding: 30px;
     /*transform: translate(0%,-50%);*/
 }
 
 #intro-text {
-  color: #3F3FBF;
+  /*color: #3F3FBF;*/
   text-transform: uppercase;
   font-size: small;
 }

@@ -30,9 +30,22 @@ RSpec.describe User, type: :model do
 
   context "validation (using factory bot) should NOT pass email uniqueness test" do
     let!(:user) { create :user }
-    let!(:another_user) { create :user}
-    it { should_not validate_uniqueness_of(:email)}
+    #Method 1 - still wrong
+    # let!(:another_user) { create :user}
+    # it { should_not validate_uniqueness_of(:email)}
+    
+    #Method 2 - closer?
+    #it "will raise an error" do
+    #  expect { another_user = create(:user) }.to raise_error(exists)
+    #end
+
+    #Method 3 - 
+    it "should raise an error" do
+      create(:user).errors[:email].should include("ActiveRecord::RecordNotUnique")
+    end
+
     #http://matchers.shoulda.io/docs/v3.1.1/Shoulda/Matchers/ActiveRecord.html#validate_uniqueness_of-instance_method
+    #https://makandracards.com/makandra/38645-testing-activerecord-validations-with-rspec
   end
 
   context "validation (using factory bot) that presence of first and last name is true " do
@@ -66,6 +79,7 @@ RSpec.describe User, type: :model do
     let!(:user) { create :user }
 
     it "will be successful when username and password is correct" do
+      expect { User.find_by()}
     end
 
     it "will NOT be successful when username and password is incorrect" do

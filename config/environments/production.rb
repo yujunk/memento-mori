@@ -11,7 +11,8 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local       = true 
+  #^ changed from false as assets not loading locally https://stackoverflow.com/questions/14519997/actioncontrollerroutingerror-no-route-matches-get-assets-images-control-t?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
   config.action_controller.perform_caching = true
 
   # Attempt to read encrypted secrets from `config/secrets.yml.enc`.
