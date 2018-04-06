@@ -10,24 +10,24 @@
           </div>
           
           <div class="modal-body">
-            <%= form_for :user_contacts, url: {action: "create"} do |p| %>
+            <%= form_for :user_contacts, url: {action: "create"}, :html => { :id => "contact-create-form", :method => :post}, :remote => true do |p| %>
               <%= p.hidden_field :user_id, :value => @current_user.id %>
               
               <div class="form-row">
                 <div class="form-group col-md-6"> 
-                  First Name: <%= p.text_field :first_name, :class => "form-control" %> 
+                  First Name*: <%= p.text_field :first_name, :class => "form-control" %> 
                 </div> <br/>
                 <div class="form-group col-md-6"> 
-                  Last Name: <%= p.text_field :last_name, :class => "form-control" %> 
+                  Last Name*: <%= p.text_field :last_name, :class => "form-control" %> 
                 </div><br/>
               </div>
 
               <div class="form-group"> 
-                Email: <%= p.text_field :email, :class => "form-control" %> 
+                Email*: <%= p.text_field :email, :class => "form-control" %> 
               </div>
 
               <div class="form-group"> 
-                Phone: <%= p.text_field :phone_number, :class => "form-control" %> 
+                Phone*: <%= p.text_field :phone_number, :class => "form-control" %> 
               </div>
 
               <div class="form-group"> 
@@ -51,9 +51,15 @@
                   Relationship: <%= p.text_field :relationship, :class => "form-control" %>
                 </div>
               </div>
+              
               <div class="form-group"> 
                 Notes: <%= p.text_field :notes, :class => "form-control"%> 
               </div>
+
+              <div id="mandatory-fields">
+                * Mandatory fields
+              </div>
+
           </div>
           
           <div class="modal-footer">

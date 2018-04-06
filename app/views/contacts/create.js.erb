@@ -1,0 +1,12 @@
+$('#build_error').remove();
+<% if @contact.errors.any? %>
+  var build_error = "<div class='alert alert-danger' id='build_error'>";
+  build_error +=   "<id='error_explanation'>";
+  <% @contact.errors.full_messages.each do |msg| %>
+    build_error += "<%= j msg %>";
+  <% end %>
+  build_error += "</div>";
+  $(build_error).insertBefore( "#contact-create-form" );
+<% else %>
+  $('#contact-create-form').modal_success();
+<% end %>

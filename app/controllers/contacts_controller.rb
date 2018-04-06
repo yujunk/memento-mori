@@ -4,9 +4,26 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
   
-    @contact.save
+    respond_to do |format|
+      if @contact.save
+        format.html { redirect_to user_contacts_path(@current_user), :flash => { success: 'Contact successfully created.' }}
+      else
+        format.json {}
+      end
+    end
 
-    redirect_to user_contacts_path(@current_user)
+    #RELATED ERRORS?
+    #https://stackoverflow.com/questions/4789613/ajax-500-internal-server-error?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+    #https://stackoverflow.com/questions/12195883/jquery-ajax-is-sending-get-instead-of-post?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+
+    #FORM_FOR REMOTE TRUE
+    #https://stackoverflow.com/questions/13893011/add-remote-true-on-form-for
+    
+    #EXTRA READING
+    #https://medium.com/@codenode/how-to-use-remote-true-to-make-ajax-calls-in-rails-3ecbed40869b
+    #http://guides.rubyonrails.org/working_with_javascript_in_rails.html
+    #https://medium.com/@AdamKing0126/ajax-and-rails-demystifying-remote-true-fe51ba2ce819
+
   end
 
   def index

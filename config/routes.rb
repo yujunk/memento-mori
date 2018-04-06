@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :vital_documents, controller: "vital_documents"
     resources :contacts, controller: "contacts"
+    resources :deputies, controller: "deputies"
   end
   get "/:user_id/contacts/search" => "contacts#search", as: "search_contacts"
   
