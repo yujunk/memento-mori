@@ -28,6 +28,7 @@ feature 'Visitor signs up' do
     fill_in 'Password', with: password
     click_button 'Sign Up'
   end
+  
 end
 
 
