@@ -18,9 +18,7 @@ class UsersController < ApplicationController
     # end
 
     @user = User.new(user_params)
-    
     # @user.session_token = string
-    
     if @user.save
       session[:user_id] = @user.id
       redirect_to "/sign_in"
