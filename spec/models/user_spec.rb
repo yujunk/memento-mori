@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'byebug'
 
 RSpec.describe User, type: :model do
   let(:proper_email)        { "hello@gmail.com" }
@@ -10,7 +11,6 @@ RSpec.describe User, type: :model do
     #proper email test
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to allow_value(proper_email).for(:email) }
-    # it { should validate_uniqueness_of(:email)}
 
     #improper email test
     it { is_expected.not_to allow_value(improper_email).for(:email)  }
@@ -30,16 +30,16 @@ RSpec.describe User, type: :model do
 
   context "validation (using factory bot) should NOT pass email uniqueness test" do
     let!(:user) { create :user }
-    #Method 1 - still wrong
+    #Attempt 1 - still wrong
     # let!(:another_user) { create :user}
     # it { should_not validate_uniqueness_of(:email)}
     
-    #Method 2 - closer?
+    #Attempt 2 - closer?
     #it "will raise an error" do
     #  expect { another_user = create(:user) }.to raise_error(exists)
     #end
 
-    #Method 3 - 
+    #Attempt 3 - 
     it "should raise an error" do
       create(:user).errors[:email].should include("ActiveRecord::RecordNotUnique")
     end
@@ -66,26 +66,52 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context "password should be encrypted and saved in database because it" do
+  context "encrypt_password custom method" do
     let!(:user) { create :user }
     
+    it "will contain an encrypted password" do
+      user.encrypted_password.should be_present
+    end
+
+    it "will not save the password entered by user" do
+      expect { user.to have_attributes(:password => nil) }
+    end
+
     it "will log in successfully" do
       expect{ User.authenticate(:user)}.not_to raise_error
     end
     #https://stackoverflow.com/questions/16603559/rspec-the-passwords-in-my-test-are-not-matching-up
   end
 
-  context "user log ins" do
+  context "match_password custom method" do
     let!(:user) { create :user }
+    let!(:logging_in_user) { User.find_by(email: "johndoe@gmail.com")}
 
-    it "will be successful when username and password is correct" do
-      expect { User.find_by()}
+    it "will match logged in password with encrypted password in database" do
+      #1) expect { logging_in_user.match_password("better2018") }.to raise_error #pass
+      #2) expect { logging_in_user.match_password("better2018") }.to eq(true) #cannot use block
+      expect(logging_in_user.match_password("better2018")).to eq(true) 
     end
 
-    it "will NOT be successful when username and password is incorrect" do
+    it "will not log in user if password is wrong" do
+      # byebug
+      #1) expect { logging_in_user.match_password("whatever") }.to raise_error #not pass
+      #2) expect { logging_in_user.match_password("whatever") }.to eq(false) #not pass
+      expect(logging_in_user.match_password("whatever")).to eq(false) 
     end
+
+    #https://stackoverflow.com/questions/19960831/rspec-expect-vs-expect-with-block-whats-the-difference
   end
 
+  context "authentication (ie logging in) custom method" do
+    let!(:user) { create :user }
+    #byebug
+    let!(:logged_in_user) { User.authenticate(email: "johndoe@gmail.com", password: "better2018") }
+
+    it "will be successful" do
+      expect(logged_in_user.last_name).to eq("Doe")
+    end
+  end
 end
 
 
@@ -93,3 +119,5 @@ end
   #http://www.rubydoc.info/gems/factory_bot/file/GETTING_STARTED.md
   #https://semaphoreci.com/community/tutorials/working-effectively-with-data-factories-using-factorygirl
   #http://railscasts.com/episodes/158-factories-not-fixtures?autoplay=true
+
+#https://semaphoreci.com/community/tutorials/how-to-test-rails-models-with-rspec

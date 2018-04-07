@@ -2,6 +2,8 @@ class ContactsController < ApplicationController
   before_action :authenticate_user
 
   def create
+    user_allowed?(action: @contact, user: @current_user)
+    
     @contact = Contact.new(contact_params)
   
     respond_to do |format|

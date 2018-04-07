@@ -5,4 +5,5 @@ FactoryBot.define do
     last_name  "Doe"
     password "better2018"
   end
+
 end

@@ -21,6 +21,10 @@ class User < ApplicationRecord
     end
   end
 
+  def match_password(password="")
+    encrypted_password == BCrypt::Engine.hash_secret(password, salt)
+  end
+
   def self.authenticate(email="", password="")
     @user = User.find_by(email: email)
     if @user && @user.match_password(password)
@@ -29,11 +33,6 @@ class User < ApplicationRecord
       return false
     end
   end
-
-  def match_password(password="")
-    encrypted_password == BCrypt::Engine.hash_secret(password, salt)
-  end
-
 end
 
 #https://www.sitepoint.com/rails-userpassword-authentication-from-scratch-part-i/
