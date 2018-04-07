@@ -35,14 +35,14 @@ RSpec.describe User, type: :model do
     # it { should_not validate_uniqueness_of(:email)}
     
     #Attempt 2 - closer?
-    #it "will raise an error" do
-    #  expect { another_user = create(:user) }.to raise_error(exists)
-    #end
+    it "will raise an error" do
+     expect { another_user = create(:user) }.to raise_error
+    end
 
     #Attempt 3 - 
-    it "should raise an error" do
-      create(:user).errors[:email].should include("ActiveRecord::RecordNotUnique")
-    end
+    # it "should raise an error" do
+    #   create(:user).errors[:email].should include("ActiveRecord::RecordNotUnique")
+    # end
 
     #http://matchers.shoulda.io/docs/v3.1.1/Shoulda/Matchers/ActiveRecord.html#validate_uniqueness_of-instance_method
     #https://makandracards.com/makandra/38645-testing-activerecord-validations-with-rspec
@@ -73,7 +73,7 @@ RSpec.describe User, type: :model do
       user.encrypted_password.should be_present
     end
 
-    it "will not save the password entered by user" do
+    it "will not save the password entered by user in the database" do
       expect { user.to have_attributes(:password => nil) }
     end
 

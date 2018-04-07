@@ -3,15 +3,15 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
       
-      <%if @current_user %>
+      <%if current_user %>
 
         <div id="user-dropdown">
           <li class="nav-item dropdown">
             <div class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= @current_user.first_name %>
+                <%= current_user.first_name %>
             </div>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="<%= dashboard_path(@current_user) %>"> Dashboard </a>
+              <a class="dropdown-item" href="<%= dashboard_path(current_user) %>"> Dashboard </a>
               <a class="dropdown-item" href="<%= settings_path %>"> Settings </a>
               <a class="dropdown-item" href= "/sign_out" data-method="delete"> Sign Out </a>
             </div>

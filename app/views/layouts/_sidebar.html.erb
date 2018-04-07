@@ -1,4 +1,4 @@
-<%if @current_user %>
+<%if current_user %>
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
@@ -8,18 +8,18 @@
             <br/>
         </li>
         <li>
-            <h4 class="category-text"> <b><%= @current_user.role %> view</b> </h4>
+            <h4 class="category-text"> <b><%= current_user.role %> view</b> </h4>
         </li>
         <li>
-            <a href="<%= dashboard_path(@current_user) %>">Dashboard  <span class="coming-soon-text"> (coming soon) </span></a>
+            <a href="<%= dashboard_path(current_user) %>">Dashboard  <span class="coming-soon-text"> (coming soon) </span></a>
         </li>
         <br/>
-        <% if @current_user.testator? %>
+        <% if current_user.testator? %>
             <li>
                 <b class="category-text">My Life </b>
             </li>
              <li>
-                <a href="<%=user_vital_documents_path(@current_user) %>"> Identification </a>
+                <a href="<%=user_vital_documents_path(current_user) %>"> Identification </a>
             </li>
             <li>
                 <a href="#" onclick="return false;">Properties <span class="coming-soon-text"> (coming soon) </span></a>
@@ -36,13 +36,13 @@
             <b  class="category-text">Connect</b>
         </li>
         <li>
-            <a href="<%=user_contacts_path(@current_user)%>">Contacts</a>
+            <a href="<%=user_contacts_path(current_user)%>">Contacts</a>
         </li>
         <li>
-            <a href="<%=user_deputies_path(@current_user)%>">Deputies</a>
+            <a href="<%=user_deputies_path(current_user)%>">Deputies</a>
         </li>
         <li>
-            <a href="<%=advisory_path(@current_user)%>">Advisory</a>
+            <a href="<%=advisory_path(current_user)%>">Advisory</a>
         </li>
     </ul>
   </div>

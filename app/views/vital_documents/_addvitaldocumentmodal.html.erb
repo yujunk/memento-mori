@@ -11,7 +11,7 @@
           
           <div class="modal-body">
             <%= form_for :user_vital_documents, url: {action: "create"} do |p| %>
-              <%= p.hidden_field :user_id, :value => @current_user.id %>
+              <%= p.hidden_field :user_id, :value => current_user.id %>
               
               <div class="form-row">
                 <div class="form-group col-md-6"> 

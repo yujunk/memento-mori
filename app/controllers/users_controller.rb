@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password, :random_token)
+    params.require(:user).permit(:email, :first_name, :last_name, :password, :random_token, :role)
   end
 
   # def generate_random_token

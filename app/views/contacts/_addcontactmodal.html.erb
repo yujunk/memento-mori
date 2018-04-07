@@ -11,7 +11,7 @@
           
           <div class="modal-body">
             <%= form_for :user_contacts, url: {action: "create"}, :html => { :id => "contact-create-form", :method => :post}, :remote => true do |p| %>
-              <%= p.hidden_field :user_id, :value => @current_user.id %>
+              <%= p.hidden_field :user_id, :value => current_user.id %>
               
               <div class="form-row">
                 <div class="form-group col-md-6"> 
@@ -59,14 +59,13 @@
               <div id="mandatory-fields">
                 * Mandatory fields
               </div>
-
-          </div>
-          
-          <div class="modal-footer">
-            <%= p.submit "Submit", class: "btn btn-primary", :onclick => "onclick=myFunction()"%>
+              <div class="modal-footer">
+                <%= p.submit "Submit", class: "btn btn-primary" %>
+             </div>
+            
           <% end %>
           </div>
-
+    
       </div>
     </div>
   </div>

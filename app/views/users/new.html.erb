@@ -22,12 +22,18 @@
           <div class="password-field">
             <%= p.label :password %>
             <%= p.password_field :password %>
+            <span id="mandatory-fields"> * Must be 6-20 characters </span>
           </div>
 
-          <!-- <div class="radio-button"> -->
-            <%#= p.label :testator %>
-            <%#= p.radio_button :testator %>
-          <!-- </div> -->
+          <div class="radio-button">
+            <%= p.label :testator %>
+            <%= p.radio_button :role, 'testator', :checked => true, :value => 'testator' %>
+          </div>
+
+          <div class="radio-button">
+            <%= p.label :deputy %>
+            <%= p.radio_button :role, 'deputy', :value => 'deputy' %>
+          </div>
 
           <div class="button-field">
             <%= p.submit "Sign Up" %>

@@ -2,13 +2,13 @@ class ContactsController < ApplicationController
   before_action :authenticate_user
 
   def create
-    user_allowed?(action: @contact, user: @current_user)
+    user_allowed?(action: @contact, user: current_user)
     
     @contact = Contact.new(contact_params)
   
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to user_contacts_path(@current_user), :flash => { success: 'Contact successfully created.' }}
+        format.html { redirect_to user_contacts_path(current_user), :flash => { success: 'Contact successfully created.' }}
       else
         format.json {}
       end
@@ -29,7 +29,7 @@ class ContactsController < ApplicationController
   end
 
   def index
-    @contacts = Contact.where(user_id: @current_user)
+    @contacts = Contact.where(user_id: current_user)
   end
 
   def show
@@ -38,9 +38,9 @@ class ContactsController < ApplicationController
 
   def search
     if params[:search].blank?
-      @contacts = Contact.where(user_id: @current_user)
+      @contacts = Contact.where(user_id: current_user)
     else
-      relevant_contacts = Contact.where(user_id: @current_user)
+      relevant_contacts = Contact.where(user_id: current_user)
       @contacts = relevant_contacts.search(params[:search])
       # @contacts = Contact.contacts_search_engine(params[:search])
     end

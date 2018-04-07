@@ -15,8 +15,8 @@
         </ul>
 
         <div class="card-body">
-          <a href="<%= user_contact_path(contact[:id], @current_user) %>" class="card-link">Show Details </a>
-          <a href="<%= edit_user_contact_path(contact[:id], @current_user) %>" class="card-link">Edit Details </a>
+          <a href="<%= user_contact_path(contact[:id], current_user) %>" class="card-link">Show Details </a>
+          <a href="<%= edit_user_contact_path(contact[:id], current_user) %>" class="card-link">Edit Details </a>
         </div>
       </div>
   <% end %>
