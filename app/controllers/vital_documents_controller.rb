@@ -2,7 +2,7 @@ class VitalDocumentsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @contacts = Contact.all
+    @vital_documents = VitalDocument.all
   end
 
   def new
