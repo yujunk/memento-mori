@@ -4,7 +4,7 @@ class CreateContacts < ActiveRecord::Migration[5.1]
       t.string :first_name, null: false
       t.string :last_name, null: false
       t.string :birthdate
-      t.integer :phone_number, null: false
+      t.integer :phone_number, null: false, limit: 6
       t.string :email, null: false
       t.string :address
       t.string :city
