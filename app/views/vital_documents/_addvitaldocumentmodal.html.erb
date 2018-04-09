@@ -17,10 +17,10 @@
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Document Type:</label>
                 </div>
-                  <%= p.select :document_type, VitalDocument.document_types.keys, {}, { :class => "custom-select", :id => "inputGroupSelect01", :onchange => "handleSelectChange(event)"} %>
+                  <%= p.select :document_type, VitalDocument.document_types.keys, {:include_blank => true}, { :class => "custom-select", :id => "inputGroupSelect01", :onchange => "handleSelectChange(event)"} %>
               </div>
 
-              <div class="form-ajax"> 
+              <div id="formAjax"> 
               </div>
 
               <div class="modal-footer">
