@@ -1,35 +1,71 @@
-//TESTING METHOD 1 - TRYING TO USE AJAX TO GET RIGHT COLUMN FORMS (FULL JQUERY):
-// $("inputGroupSelect01").onchange(function(event) {
-//   $.ajax({
-//   $("#formAjax").html("");
-//   $("<%= escape_javascript(  render partial: 'vital_documents/ajax_form')%>").appendTo("#formAjax");
-    // $("formAjax").append("<%= j render partial: 'vital_documents/ajax_form' %>");
-//   });
-// });
+//No need for AJAX. Just JS
 
-//TESTING METHOD 2 - TRYING TO USE AJAX TO GET RIGHT COLUMN FORMS (MIX OF JS & JQUERY):
 // var selector = document.getElementById("inputGroupSelect01");
 // selector.onchange = handleSelectChange;
 
 // function handleSelectChange(event) {
-//     $.ajax(event, {
-
-//     })
+//     var selectElement = event.target;
 //     var value = selectElement.value;
 //     alert(value);
 // }
 
+var IDENTITYCARD;
 
-//THIS WORKS - TO IDENTIFY SELECTOR - BUT NOT COMPLETE:
+function checkShow(element) {
+  element.style.display === "none"
+}
+
+
 var selector = document.getElementById("inputGroupSelect01");
 selector.onchange = handleSelectChange;
 
 function handleSelectChange(event) {
-    var selectElement = event.target;
-    debugger
-    var value = selectElement.value;
-    alert(value);
+  var selectElement = event.target;
+  var value = selectElement.value;
+
+  console.log(value)
+
+  // $("#formAppear").hide();
+    
+  if(value=="identity_card")
+    {
+      IDENTITYCARD = document.getElementById("identity_card")
+      IDENTITYCARD.style.display = "";
+    }
+  else if(value="birth_certificate")
+    {
+      if(!checkShow(IDENTITYCARD) ){
+        $("#identity_card").hide()
+        $("#birth_certificate").show();
+      }
+    }
+  else if(value="driver_license")
+  {
+    $("#driver_license").show();
+  }
+  else if(value="passport")
+  {
+    $("#passport").show();
+  }
+  else if(value="work_permit_or_visa")
+  {
+    $("#work_permit_or_visa").show();
+  }
+  else if(value="military_identity_card")
+  {
+    $("#military_identity_card").show();
+  }
+  else if(value="police_identity_card")
+  {
+    $("#police_identity_card").show();
+  }
+  else
+  {
+    $("#other").show();
+  }
 }
+
+
 
 
 

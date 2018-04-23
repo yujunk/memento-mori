@@ -1,10 +1,11 @@
 class User < ApplicationRecord
+  has_secure_password
   has_many :vital_documents
   has_many :contacts
 
   enum role: { testator: 0, deputy: 1 }
 
-  before_save :encrypt_password
+  # before_save :encrypt_password
 
   EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
@@ -13,26 +14,29 @@ class User < ApplicationRecord
   validates :password, :presence => true 
   validates_length_of :password, :in => 6..20, :on => :create
 
-  def encrypt_password
-    if password.present?
-      self.salt = BCrypt::Engine.generate_salt
-      self.encrypted_password= BCrypt::Engine.hash_secret(password, salt)
-      self.password = nil
-    end
-  end
 
-  def match_password(password="")
-    encrypted_password == BCrypt::Engine.hash_secret(password, salt)
-  end
 
-  def self.authenticate(email="", password="")
-    @user = User.find_by(email: email)
-    if @user && @user.match_password(password)
-      return @user
-    else
-      return false
-    end
-  end
+# Before using has_secure_password
+#   def encrypt_password
+#     if password.present?
+#       self.salt = BCrypt::Engine.generate_salt
+#       self.encrypted_password= BCrypt::Engine.hash_secret(password, salt)
+#       self.password = nil
+#     end
+#   end
+
+#   def match_password(password="")
+#     encrypted_password == BCrypt::Engine.hash_secret(password, salt)
+#   end
+
+#   def self.authenticate(email="", password="")
+#     @user = User.find_by(email: email)
+#     if @user && @user.match_password(password)
+#       return @user
+#     else
+#       return false
+#     end
+#   end
 end
 
 #https://www.sitepoint.com/rails-userpassword-authentication-from-scratch-part-i/

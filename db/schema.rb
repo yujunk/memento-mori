@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180408060634) do
+ActiveRecord::Schema.define(version: 20180402050448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,29 +36,32 @@ ActiveRecord::Schema.define(version: 20180408060634) do
     t.string "email", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.string "password"
-    t.string "encrypted_password", limit: 128, null: false
+    t.string "password_digest"
+    t.string "password_confirmation"
     t.string "session_token", limit: 128
-    t.string "salt", limit: 128
+    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email"
+    t.index ["session_token"], name: "index_users_on_session_token"
   end
 
   create_table "vital_documents", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "middle_name"
     t.integer "document_type", default: 0
-    t.string "country_of_issue"
-    t.string "place_of_issue"
+    t.string "license_class"
     t.date "issue_date"
     t.date "expiration_date", null: false
-    t.string "license_class"
+    t.string "place_of_issue"
+    t.string "country_of_issue"
     t.string "paperwork_location", null: false
-    t.string "instructions"
+    t.text "instructions"
     t.string "doc_upload"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_vital_documents_on_user_id"
   end
 

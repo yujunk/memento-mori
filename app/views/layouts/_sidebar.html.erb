@@ -1,4 +1,4 @@
-<%if current_user %>
+<% if current_user %>
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
@@ -8,30 +8,23 @@
             <br/>
         </li>
         <li>
-            <h4 class="category-text"> <b><%= current_user.role %> view</b> </h4>
-        </li>
-        <li>
             <a href="<%= dashboard_path(current_user) %>">Dashboard  <span class="coming-soon-text"> (coming soon) </span></a>
         </li>
-        <br/>
-        <% if current_user.testator? %>
-            <li>
-                <b class="category-text">My Life </b>
-            </li>
-             <li>
-                <a href="<%=user_vital_documents_path(current_user) %>"> Identification </a>
-            </li>
-            <li>
-                <a href="#" onclick="return false;">Properties <span class="coming-soon-text"> (coming soon) </span></a>
-            </li>
-            <li>
-                <a href="#" onclick="return false;">Health <span class="coming-soon-text"> (coming soon) </span></a>
-            </li>
-            <li>
-                <a href="#" onclick="return false;">Financial <span class="coming-soon-text"> (coming soon) </span></a>
-            </li>
-            <br/>
-        <% end %>
+        <li>
+            <b class="category-text">My Life </b>
+        </li>
+        <li>
+            <a href="<%=user_vital_documents_path(current_user) %>"> Identification </a>
+        </li>
+        <li>
+            <a href="#" onclick="return false;">Properties <span class="coming-soon-text"> (coming soon) </span></a>
+        </li>
+        <li>
+            <a href="#" onclick="return false;">Health <span class="coming-soon-text"> (coming soon) </span></a>
+        </li>
+        <li>
+            <a href="#" onclick="return false;">Financial <span class="coming-soon-text"> (coming soon) </span></a>
+        </li>
         <li>
             <b  class="category-text">Connect</b>
         </li>
