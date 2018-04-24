@@ -9,12 +9,13 @@
 //     alert(value);
 // }
 
-var IDENTITYCARD;
+var DOCUMENTTYPE;
 
-function checkShow(element) {
+function checkDisplayNone(element) {
   element.style.display === "none"
 }
 
+var DOCUMENTTYPEARRAY = ["identity_card", "driver_license", "passport", "birth_certificate", "work_permit_or_visa", "military_identity_card", "police_identity_card"]
 
 var selector = document.getElementById("inputGroupSelect01");
 selector.onchange = handleSelectChange;
@@ -22,20 +23,21 @@ selector.onchange = handleSelectChange;
 function handleSelectChange(event) {
   var selectElement = event.target;
   var value = selectElement.value;
-
-  console.log(value)
-
-  // $("#formAppear").hide();
     
   if(value=="identity_card")
     {
-      IDENTITYCARD = document.getElementById("identity_card")
-      IDENTITYCARD.style.display = "";
+      // while (i < DOCUMENTTYPEARRAY.length) {
+        
+      // }
+      DOCUMENTTYPE = document.getElementById("identity_card")
+      DOCUMENTTYPE.style.display = "";
+
+      $("#identity_card").show();
     }
   else if(value="birth_certificate")
     {
-      if(!checkShow(IDENTITYCARD) ){
-        $("#identity_card").hide()
+      if(!checkDisplayNone(DOCUMENTTYPE) ){
+        DOCUMENTTYPE.style.display = "none";
         $("#birth_certificate").show();
       }
     }
