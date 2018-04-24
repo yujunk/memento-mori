@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @authorized_user = User.authenticate(params[:user][:email], params[:user][:password])
+    @authorized_user = User.authenticate_with_database(params[:user][:email], params[:user][:password])
 
     if @authorized_user
       session[:user_id] = @authorized_user.id

@@ -1,21 +1,13 @@
-//No need for AJAX. Just JS
+var DOCUMENTTYPEARRAY = ["identity_card", "driver_license", "passport", "birth_certificate", "work_permit_or_visa", "military_identity_card", "police_identity_card"];
 
-// var selector = document.getElementById("inputGroupSelect01");
-// selector.onchange = handleSelectChange;
-
-// function handleSelectChange(event) {
-//     var selectElement = event.target;
-//     var value = selectElement.value;
-//     alert(value);
-// }
-
-var DOCUMENTTYPE;
-
-function checkDisplayNone(element) {
-  element.style.display === "none"
+function displayNonePrevious() {
+  i = 0;
+  while (i < DOCUMENTTYPEARRAY.length) {
+    var documentType = document.getElementById(DOCUMENTTYPEARRAY[i])
+    documentType.style.display = "none";
+    i++;
+  }
 }
-
-var DOCUMENTTYPEARRAY = ["identity_card", "driver_license", "passport", "birth_certificate", "work_permit_or_visa", "military_identity_card", "police_identity_card"]
 
 var selector = document.getElementById("inputGroupSelect01");
 selector.onchange = handleSelectChange;
@@ -26,50 +18,77 @@ function handleSelectChange(event) {
     
   if(value=="identity_card")
     {
-      // while (i < DOCUMENTTYPEARRAY.length) {
-        
-      // }
-      DOCUMENTTYPE = document.getElementById("identity_card")
-      DOCUMENTTYPE.style.display = "";
-
+      displayNonePrevious();
       $("#identity_card").show();
     }
-  else if(value="birth_certificate")
+  
+
+  else if(value=="driver_license")
     {
-      if(!checkDisplayNone(DOCUMENTTYPE) ){
-        DOCUMENTTYPE.style.display = "none";
-        $("#birth_certificate").show();
-      }
+      displayNonePrevious();
+      $("#driver_license").show();
     }
-  else if(value="driver_license")
+
+  else if(value=="passport")
+    {
+      displayNonePrevious();
+      $("#passport").show();
+    }
+
+  else if(value=="birth_certificate")
   {
-    $("#driver_license").show();
+    displayNonePrevious();
+    $("#birth_certificate").show();
   }
-  else if(value="passport")
-  {
-    $("#passport").show();
-  }
-  else if(value="work_permit_or_visa")
-  {
-    $("#work_permit_or_visa").show();
-  }
-  else if(value="military_identity_card")
-  {
-    $("#military_identity_card").show();
-  }
-  else if(value="police_identity_card")
-  {
-    $("#police_identity_card").show();
-  }
+
+  else if(value=="work_permit_or_visa")
+    {
+      displayNonePrevious();
+      $("#work_permit_or_visa").show();
+    }
+  
+  else if(value=="military_identity_card")
+    {
+      displayNonePrevious();
+      $("#military_identity_card").show();
+    }
+  else if(value=="police_identity_card")
+    {
+      displayNonePrevious();
+      $("#police_identity_card").show();
+    }
   else
-  {
-    $("#other").show();
-  }
+    {
+      displayNonePrevious();
+      $("#other").show();
+    }
 }
 
 
 
+//TESTING OUT JAVASCRIPT
 
+// var selector = document.getElementById("inputGroupSelect01");
+// selector.onchange = handleSelectChange;
+
+// function handleSelectChange(event) {
+//     var selectElement = event.target;
+//     var value = selectElement.value;
+//     alert(value);
+// }
+
+// AIMAN'S WAY
+// function checkDisplayNone(element) {
+//   element.style.display === "none"
+// }
+
+// else if(value="birth_certificate")
+//     {
+      // if(!checkDisplayNone(DOCUMENTTYPE) ){
+      //   DOCUMENTTYPE.style.display = "none";
+      //   $("#birth_certificate").show();
+      // }
+    // }
 
 
 // https://stackoverflow.com/questions/5416767/get-selected-value-text-from-select-on-change
