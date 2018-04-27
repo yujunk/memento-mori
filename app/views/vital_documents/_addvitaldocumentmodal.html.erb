@@ -20,73 +20,32 @@
                   <%= p.select :document_type, VitalDocument.document_types.keys, {:include_blank => true}, { :class => "custom-select", :id => "inputGroupSelect01", :onchange => "handleSelectChange(event)"} %>
               </div>
 
-              <div id="formAppear">
 
-                <div id="identity_card" style="display: none;">
-                  <%#= p.label :first_name, "First Name:" %>
-                  <%#= p.text_field :first_name, :class => "form-control" %>
-                  
-                  <%#= p.label :middle_name, "Middle Name:" %>
-                  <%#= p.text_field :middle_name, :class => "form-control" %>
-                  
-                  <%#= p.label :last_name, "Last Name:" %>
-                  <%#= p.text_field :last_name, :class => "form-control" %>
-                  
-                  <%#= p.label :issue_date, "Date of Document Issue:" %>
-                  <%#= p.date_select(:issue_date, :start_year => 1900) %>
+              <div id="all_documents_display" style="display: none;">
+                <span id="document_type_name_display">
+                </span>
+                <%= p.text_field :identification_number, :class => "form-control" %>
+                
+                <%= p.label :country_of_issue, "Country of Document Issuance:" %>
+                <%= p.text_field :country_of_issue, :class => "form-control" %>
 
-                  <%= p.label :expiration_date, "Date of Document Expiry:" %>
-                  <%= p.date_select(:expiration_date, :start_year => 1900)  %>
+                <span id="expiration_date_display" style="display: none;">
+                  <%= p.label :expiration_date, "Date of Expiry:" %>
+                  <%= p.text_field :expiration_date, :class => "form-control" %>
+                </span>
 
-                  <%#= p.label :place_of_issue, "City or Place of Document Issuance:" %>
-                  <%#= p.text_field :place_of_issue, :class => "form-control" %>
+                <%= p.label :paperwork_location, "Where This Document is Stored: *" %>
+                <%= p.text_field :paperwork_location, :class => "form-control" %>
 
-                  <%= p.label :country_of_issue, "Country of Document Issuance:" %>
-                  <%= p.text_field :country_of_issue, :class => "form-control" %>
+                <%= p.label :instructions, "Instructions:" %>
+                <%= p.text_field :instructions, :class => "form-control" %>
 
-                  <%= p.label :paperwork_location, "Where This Document is Stored:" %>
-                  <%= p.text_field :paperwork_location, :class => "form-control" %>
+                <%= p.label :doc_upload, "Upload Document(s):" %>
+                <%= p.file_field :doc_uploads, multiple: true %>
+              </div> 
 
-                  <%= p.label :instructions, "Instructions:" %>
-                  <%= p.text_field :instructions, :class => "form-control" %>
-
-                  <%= p.label :doc_upload, "Upload Document(s):" %>
-                  <%= p.file_field :doc_upload %>
-                </div> 
-
-                <div id="driver_license" style="display: none;">
-                  Driver License
-                </div> 
-
-                <div id="passport" style="display: none;">
-                  <%= p.text_field :first_name, :class => "form-control" %>
-                  <%= p.text_field :middle_name, :class => "form-control" %>
-                  <%= p.text_field :last_name, :class => "form-control" %>
-                </div> 
-
-                <div id="birth_certificate" style="display: none;">
-                  <%= p.text_field :first_name, :class => "form-control" %>
-                  <%= p.text_field :middle_name, :class => "form-control" %>
-                  <%= p.text_field :last_name, :class => "form-control" %>
-                  <%= p.date_select(:issue_date, :start_year => 1900) %>
-                  <%= p.text_field :country_of_issue, :class => "form-control" %>
-                  <%= p.text_field :paperwork_location, :class => "form-control" %>
-                  <%= p.text_field :instructions, :class => "form-control" %>
-                  <%= p.file_field :doc_upload %>
-                </div> 
-
-                <div id="work_permit_or_visa" style="display: none;">
-                  Work Permit
-                </div> 
-
-                <div id="military_identity_card" style="display: none;">
-                  Military IC
-                </div> 
-
-                <div id="police_identity_card" style="display: none;">
-                  Police IC
-                </div> 
-
+              <div id="mandatory-fields">
+                * Mandatory field
               </div>
 
               <div class="modal-footer">
@@ -102,3 +61,6 @@
 
   <!-- https://stackoverflow.com/questions/23686265/saving-enum-from-select-in-rails-4-1/23686698 -->
   <!-- https://stackoverflow.com/questions/4081907/ruby-on-rails-form-for-select-field-with-class -->
+
+
+  <!-- http://www.liooo.engineer/blog/2014/11/22/building-multiple-file-upload-form-in-rails-way/ -->
