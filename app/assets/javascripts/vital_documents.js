@@ -22,64 +22,64 @@ function handleSelectChange(event) {
   var selectElement = event.target;
   var value = selectElement.value;
     
-  if(value=="identity_card")
+  if(value=="Identity Card")
     {
       $("#document_type_name_display").html("");
-      $("#document_type_name_display").append("<label for=\"identity_card\">IC Number: </label>");
+      $("#document_type_name_display").append("<label for=\"Identity Card\">IC Number: </label>");
       expiryDateNeededItems(value);
     }
 
-  else if(value=="driver_license")
+  else if(value=="Driver's License")
     {
       $("#document_type_name_display").html("");
-      $("#document_type_name_display").append("<label for=\"driver_license\"> License Number: </label>");
+      $("#document_type_name_display").append("<label for=\"Driver's License\"> License Number: </label>");
       expiryDateNeededItems(value);
 
     }
 
-  else if(value=="passport")
+  else if(value=="Passport")
     {
       $("#document_type_name_display").html("");
-      $("#document_type_name_display").append("<label for=\"passport\"> Passport Number: </label>");
+      $("#document_type_name_display").append("<label for=\"Passport\"> Passport Number: </label>");
       expiryDateNeededItems(value);
     }
 
-  else if(value=="birth_certificate")
+  else if(value=="Birth Certificate")
   {
     $("#document_type_name_display").html("");
-    $("#document_type_name_display").append("<label for=\"birth_certificate\"> Birth Cert Number: </label>");
+    $("#document_type_name_display").append("<label for=\"Birth Certificate\"> Birth Cert Number: </label>");
     expiryDateNeededItems(value);
   }
 
-  else if(value=="work_permit_or_visa")
+  else if(value=="Work Permit or Visa")
     {
       $("#document_type_name_display").html("");
-      $("#document_type_name_display").append("<label for=\"work_permit_or_visa\"> ID Number: </label>");
+      $("#document_type_name_display").append("<label for=\"Work Permit or Visa\"> ID Number: </label>");
       expiryDateNeededItems(value);
     }
   
-  else if(value=="military_identity_card")
+  else if(value=="Military Identity Card")
     {
       $("#document_type_name_display").html("");
-      $("#document_type_name_display").append("<label for=\"military_identity_card\"> Member Number: </label>");
+      $("#document_type_name_display").append("<label for=\"Military Identity Card\"> Member Number: </label>");
       expiryDateNeededItems(value);
     }
-  else if(value=="police_identity_card")
+  else if(value=="Police Identity Card")
     {
       $("#document_type_name_display").html("");
-      $("#document_type_name_display").append("<label for=\"police_identity_card\"> Member Number: </label>");
+      $("#document_type_name_display").append("<label for=\"Police Identity Card\"> Member Number: </label>");
       expiryDateNeededItems(value);
     }
-  else if(value=="tax_identity")
+  else if(value=="Tax Identity")
     {
       $("#document_type_name_display").html("");
-      $("#document_type_name_display").append("<label for=\"tax_identity\"> Tax Registration Number: </label>");
+      $("#document_type_name_display").append("<label for=\"Tax Identity\"> Tax Registration Number: </label>");
       expiryDateNeededItems(value);
     }
   else
     {
       $("#document_type_name_display").html("");
-      $("#document_type_name_display").append("<label for=\"driver_license\"> License Number: </label>");
+      $("#document_type_name_display").append("<label for=\"Other\"> Identification Number: </label>");
       expiryDateNeededItems(value);
     }
 }

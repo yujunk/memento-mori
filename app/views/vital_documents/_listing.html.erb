@@ -1,0 +1,41 @@
+<% @vital_documents.each do |d| %>
+<div class="card">
+  <h5 class="card-header text-white bg-secondary mb-3"> <%= d.document_type %> </h5>
+  <div class="card-body bg-light mb-3">
+    <p class="card-text">
+      <table class="table table-bordered  white-bg">
+        <tbody>
+          <tr>
+            <th scope="row"> Number: </th>
+            <td> <%= d.identification_number %> </td>
+          </tr>
+          <tr>
+            <th scope="row"> Country: </th>
+            <td> <%= d.country_of_issue %> </td>
+          </tr>
+          <tr>
+            <th scope="row"> Location: </th>
+            <td> <%= d.paperwork_location %> </td>
+          </tr>
+          <tr>
+            <th scope="row"> Instructions: </th>
+            <td> <%= d.instructions %> </td>
+          </tr>
+       </tbody>
+      </table>
+      <img src="<%= d.doc_uploads_urls[1] %>" class="img-thumbnail float-right" alt="document pic">
+    </p>
+    <div class="d-flex flex-row-reverse ">
+      <div class="p-2 bd-highlight">
+        <a href="#" class="btn btn-outline-danger btn-small">Delete</a>
+      </div>
+      <div class="p-2 bd-highlight">
+        <a href="#" class="btn btn-outline-secondary btn-small">Edit</a>
+      </div>
+    </div>
+  </div>
+</div>
+<br/>
+<% end %>
+
+

@@ -1,6 +1,6 @@
 class VitalDocument < ApplicationRecord
   belongs_to :user
-  enum document_type: { identity_card: 0, driver_license: 1, passport: 2,birth_certificate: 3, work_permit_or_visa: 4, military_identity_card: 5, police_identity_card: 6, tax_identity: 7, other: 8 }
+  enum document_type: { "Identity Card" => 0, "Driver's License" => 1, "Passport" => 2, "Birth Certificate" => 3, "Work Permit or Visa" => 4, "Military Identity Card" => 5, "Police Identity Card" => 6, "Tax Identity" => 7, "Other" => 8 }
 
   mount_uploaders :doc_uploads, DocumentUploader
 
