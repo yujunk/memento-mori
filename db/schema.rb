@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20180402050448) do
     t.string "country_of_issue"
     t.string "paperwork_location", null: false
     t.text "instructions"
-    t.string "doc_uploads", default: [], array: true
+    t.text "doc_uploads", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

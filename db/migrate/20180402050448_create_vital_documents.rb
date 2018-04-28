@@ -13,7 +13,7 @@ class CreateVitalDocuments < ActiveRecord::Migration[5.1]
       t.string :country_of_issue
       t.string :paperwork_location, null: false
       t.text :instructions
-      t.string :doc_uploads, array:true, default: [] 
+      t.text :doc_uploads, array:true, default: [] 
       t.timestamps
     end
 
